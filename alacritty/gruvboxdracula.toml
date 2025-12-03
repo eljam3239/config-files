@@ -1,0 +1,59 @@
+# Gruvbox-Dracula Hybrid theme for Alacritty
+# Based on Dracula structure with Gruvbox Dark colors
+
+[colors.primary]
+background = "#282828"   # dark_gray
+foreground = "#EBDBB2"   # white
+bright_foreground = "#EBDBB2"
+
+[colors.cursor]
+text = "#282828"         # dark_gray
+cursor = "#EBDBB2"       # white
+
+[colors.vi_mode_cursor]
+text = "CellBackground"
+cursor = "CellForeground"
+
+[colors.selection]
+text = "CellForeground"
+background = "#504945"   # dark_purple
+
+[colors.normal]
+black   = "#32302F"      # gray
+red     = "#CC241D"      # red
+green   = "#98971A"      # green
+yellow  = "#D79921"      # yellow
+blue    = "#504945"      # dark_purple
+magenta = "#B16286"      # light_purple
+cyan    = "#689D6A"      # cyan
+white   = "#EBDBB2"      # white
+
+[colors.bright]
+black   = "#32302F"      # gray (could use #3C3836 for a brighter variant, but using same)
+red     = "#FB4934"      # Standard Gruvbox bright red (your palette lacks bright variants)
+green   = "#B8BB26"      # Standard Gruvbox bright green
+yellow  = "#FABD2F"      # Standard Gruvbox bright yellow
+blue    = "#83A598"      # Standard Gruvbox bright blue
+magenta = "#D3869B"      # pink
+cyan    = "#8EC07C"      # Standard Gruvbox bright cyan
+white   = "#EBDBB2"      # white
+
+[colors.search.matches]
+foreground = "#504945"   # dark_purple
+background = "#98971A"   # green
+
+[colors.search.focused_match]
+foreground = "#504945"   # dark_purple
+background = "#D79921"   # yellow
+
+[colors.footer_bar]
+background = "#282828"   # dark_gray
+foreground = "#EBDBB2"   # white
+
+[colors.hints.start]
+foreground = "#282828"   # dark_gray
+background = "#D79921"   # yellow
+
+[colors.hints.end]
+foreground = "#D79921"   # yellow
+background = "#282828"   # dark_gray
