@@ -1,14 +1,14 @@
-# Gruvbox-Dracula Hybrid theme for Alacritty
-# Based on Dracula structure with Gruvbox Dark colors
+# Gruvbox Dark (comprehensive) theme for Alacritty
+# Based on Dracula structure with full Gruvbox palette
 
 [colors.primary]
-background = "#282828"   # dark_gray
-foreground = "#EBDBB2"   # white
-bright_foreground = "#EBDBB2"
+background = "#282828"       # muted_back (main background)
+foreground = "#EBDBB2"       # strong_fore / fore_1 (primary text)
+bright_foreground = "#FBF1C7" # fore_0_soft (bright foreground)
 
 [colors.cursor]
-text = "#282828"         # dark_gray
-cursor = "#EBDBB2"       # white
+text = "#1D2021"             # back_0_hard (cursor background)
+cursor = "#EBDBB2"           # strong_fore / fore_1 (cursor color)
 
 [colors.vi_mode_cursor]
 text = "CellBackground"
@@ -16,44 +16,44 @@ cursor = "CellForeground"
 
 [colors.selection]
 text = "CellForeground"
-background = "#504945"   # dark_purple
+background = "#504945"       # back_2 (selection background)
 
 [colors.normal]
-black   = "#32302F"      # gray
-red     = "#CC241D"      # red
-green   = "#98971A"      # green
-yellow  = "#D79921"      # yellow
-blue    = "#504945"      # dark_purple
-magenta = "#B16286"      # light_purple
-cyan    = "#689D6A"      # cyan
-white   = "#EBDBB2"      # white
+black   = "#32302F"          # back_0_soft (darkest gray)
+red     = "#CC241D"          # muted_red
+green   = "#98971A"          # muted_green
+yellow  = "#D79921"          # muted_yellow
+blue    = "#458588"          # muted_blue
+magenta = "#B16286"          # muted_purple
+cyan    = "#689D6A"          # muted_aqua
+white   = "#A89984"          # muted_fore (light gray)
 
 [colors.bright]
-black   = "#32302F"      # gray (could use #3C3836 for a brighter variant, but using same)
-red     = "#FB4934"      # Standard Gruvbox bright red (your palette lacks bright variants)
-green   = "#B8BB26"      # Standard Gruvbox bright green
-yellow  = "#FABD2F"      # Standard Gruvbox bright yellow
-blue    = "#83A598"      # Standard Gruvbox bright blue
-magenta = "#D3869B"      # pink
-cyan    = "#8EC07C"      # Standard Gruvbox bright cyan
-white   = "#EBDBB2"      # white
+black   = "#3C3836"          # back_1 (brighter gray)
+red     = "#FB4934"          # strong_red
+green   = "#B8BB26"          # strong_green
+yellow  = "#FABD2F"          # strong_yellow
+blue    = "#83A598"          # strong_blue
+magenta = "#D3869B"          # strong_purple
+cyan    = "#8EC07C"          # strong_aqua
+white   = "#EBDBB2"          # strong_fore (bright white)
 
 [colors.search.matches]
-foreground = "#504945"   # dark_purple
-background = "#98971A"   # green
+foreground = "#504945"       # back_2
+background = "#98971A"       # muted_green
 
 [colors.search.focused_match]
-foreground = "#504945"   # dark_purple
-background = "#D79921"   # yellow
+foreground = "#504945"       # back_2
+background = "#D79921"       # muted_yellow
 
 [colors.footer_bar]
-background = "#282828"   # dark_gray
-foreground = "#EBDBB2"   # white
+background = "#282828"       # muted_back
+foreground = "#EBDBB2"       # strong_fore
 
 [colors.hints.start]
-foreground = "#282828"   # dark_gray
-background = "#D79921"   # yellow
+foreground = "#1D2021"       # back_0_hard
+background = "#D79921"       # muted_yellow
 
 [colors.hints.end]
-foreground = "#D79921"   # yellow
-background = "#282828"   # dark_gray
+foreground = "#D79921"       # muted_yellow
+background = "#1D2021"       # back_0_hard
