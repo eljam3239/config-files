@@ -1,7 +1,10 @@
 # Your existing PATH exports
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:/Users/eli/work/flutter/bin"
 export PATH="$PATH:$HOME/.pub-cache/bin"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export LEDGER_FILE=/Users/eli/Documents/finance/2026.journal
+
 
 # Initialize zplug (NEW ADDITION)
 if [[ -f ~/.zplug/init.zsh ]]; then
@@ -25,3 +28,11 @@ if ! zplug check; then
   zplug install
 fi
 zplug load
+eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# opencode
+export PATH=/Users/eli/.opencode/bin:$PATH

@@ -1,1 +1,9 @@
 flutter/
+configstore/
+stripe/
+mgba/
+.DS_Store
+tigervnc/
+opencode/
+tmux/plugins/*
+tmux/.nvimlog
