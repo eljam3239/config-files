@@ -394,21 +394,22 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ============================================================================
 -- PLUGINS (vim.pack)
 -- ============================================================================
-vim.pack.add({	
+vim.pack.add({
 	"https://www.github.com/nvim-tree/nvim-tree.lua",
-  "https://github.com/ibhagwan/fzf-lua",
-  "https://github.com/nvim-mini/mini.nvim",
-  "https://github.com/lewis6991/gitsigns.nvim",
-  {
+	"https://github.com/ibhagwan/fzf-lua",
+	"https://github.com/nvim-mini/mini.nvim",
+	"https://github.com/lewis6991/gitsigns.nvim",
+	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
 		branch = "main",
 		build = ":TSUpdate",
 	},
-  -- Language Server Protocols
+	-- Language Server Protocols
 	"https://www.github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/creativenull/efmls-configs-nvim",
 })
-	
+
 local function packadd(name)
 	vim.cmd("packadd " .. name)
 end
@@ -420,6 +421,7 @@ packadd("nvim-treesitter")
 -- LSP
 packadd("nvim-lspconfig")
 packadd("mason.nvim")
+packadd("efmls-configs-nvim")
 
 -- ============================================================================
 -- PLUGIN CONFIGS
@@ -445,7 +447,7 @@ local setup_treesitter = function()
 		"vue",
 		"svelte",
 		"bash",
-    "dart",
+		"dart",
 	}
 
 	local config = require("nvim-treesitter.config")
@@ -477,18 +479,18 @@ end
 setup_treesitter()
 
 require("nvim-tree").setup({
-  view = {
-    width = 35,
-  },
-  filters = {
-    dotfiles = false,
-  },
-  renderer = {
-    group_empty = true,
-  },
+	view = {
+		width = 35,
+	},
+	filters = {
+		dotfiles = false,
+	},
+	renderer = {
+		group_empty = true,
+	},
 })
 vim.keymap.set("n", "<leader>e", function()
-  require("nvim-tree.api").tree.toggle()
+	require("nvim-tree.api").tree.toggle()
 end, { desc = "Toggle NvimTree" })
 
 require("fzf-lua").setup({})
@@ -524,56 +526,56 @@ require("mini.bufremove").setup({})
 require("mini.notify").setup({})
 require("mini.icons").setup({})
 
-require('gitsigns').setup {
-  signs = {
-    add          = { text = '┃' },
-    change       = { text = '┃' },
-    delete       = { text = '_' },
-    topdelete    = { text = '‾' },
-    changedelete = { text = '~' },
-    untracked    = { text = '┆' },
-  },
-  signs_staged = {
-    add          = { text = '┃' },
-    change       = { text = '┃' },
-    delete       = { text = '_' },
-    topdelete    = { text = '‾' },
-    changedelete = { text = '~' },
-    untracked    = { text = '┆' },
-  },
-  signs_staged_enable = true,
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  watch_gitdir = {
-    follow_files = true
-  },
-  auto_attach = true,
-  attach_to_untracked = false,
-  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-  current_line_blame_opts = {
-    virt_text = true,
-    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 1000,
-    ignore_whitespace = false,
-    virt_text_priority = 100,
-    use_focus = true,
-  },
-  current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
-  blame_formatter = nil, -- Use default
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  max_file_length = 40000, -- Disable if file is longer than this (in lines)
-  preview_config = {
-    -- Options passed to nvim_open_win
-    style = 'minimal',
-    relative = 'cursor',
-    row = 0,
-    col = 1
-  },
-}
+require("gitsigns").setup({
+	signs = {
+		add = { text = "┃" },
+		change = { text = "┃" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = "~" },
+		untracked = { text = "┆" },
+	},
+	signs_staged = {
+		add = { text = "┃" },
+		change = { text = "┃" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = "~" },
+		untracked = { text = "┆" },
+	},
+	signs_staged_enable = true,
+	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+	word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+	watch_gitdir = {
+		follow_files = true,
+	},
+	auto_attach = true,
+	attach_to_untracked = false,
+	current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+	current_line_blame_opts = {
+		virt_text = true,
+		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+		delay = 1000,
+		ignore_whitespace = false,
+		virt_text_priority = 100,
+		use_focus = true,
+	},
+	current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+	blame_formatter = nil, -- Use default
+	sign_priority = 6,
+	update_debounce = 100,
+	status_formatter = nil, -- Use default
+	max_file_length = 40000, -- Disable if file is longer than this (in lines)
+	preview_config = {
+		-- Options passed to nvim_open_win
+		style = "minimal",
+		relative = "cursor",
+		row = 0,
+		col = 1,
+	},
+})
 
 require("mason").setup({})
 
@@ -717,3 +719,69 @@ vim.lsp.enable({
 	"clangd",
 	"efm",
 })
+
+do
+	local luacheck = require("efmls-configs.linters.luacheck")
+	local stylua = require("efmls-configs.formatters.stylua")
+
+	local flake8 = require("efmls-configs.linters.flake8")
+	local black = require("efmls-configs.formatters.black")
+
+	local prettier_d = require("efmls-configs.formatters.prettier_d")
+	local eslint_d = require("efmls-configs.linters.eslint_d")
+
+	local fixjson = require("efmls-configs.formatters.fixjson")
+
+	local shellcheck = require("efmls-configs.linters.shellcheck")
+	local shfmt = require("efmls-configs.formatters.shfmt")
+
+	local cpplint = require("efmls-configs.linters.cpplint")
+	local clangfmt = require("efmls-configs.formatters.clang_format")
+
+	local go_revive = require("efmls-configs.linters.go_revive")
+	local gofumpt = require("efmls-configs.formatters.gofumpt")
+
+	vim.lsp.config("efm", {
+		filetypes = {
+			"c",
+			"cpp",
+			"css",
+			"go",
+			"html",
+			"javascript",
+			"javascriptreact",
+			"json",
+			"jsonc",
+			"lua",
+			"markdown",
+			"python",
+			"sh",
+			"typescript",
+			"typescriptreact",
+			"vue",
+			"svelte",
+		},
+		init_options = { documentFormatting = true },
+		settings = {
+			languages = {
+				c = { clangfmt, cpplint },
+				go = { gofumpt, go_revive },
+				cpp = { clangfmt, cpplint },
+				css = { prettier_d },
+				html = { prettier_d },
+				javascript = { eslint_d, prettier_d },
+				javascriptreact = { eslint_d, prettier_d },
+				json = { eslint_d, fixjson },
+				jsonc = { eslint_d, fixjson },
+				lua = { luacheck, stylua },
+				markdown = { prettier_d },
+				python = { flake8, black },
+				sh = { shellcheck, shfmt },
+				typescript = { eslint_d, prettier_d },
+				typescriptreact = { eslint_d, prettier_d },
+				vue = { eslint_d, prettier_d },
+				svelte = { eslint_d, prettier_d },
+			},
+		},
+	})
+end
