@@ -395,12 +395,14 @@ vim.api.nvim_create_autocmd("FileType", {
 -- PLUGINS (vim.pack)
 -- ============================================================================
 vim.pack.add({	
-	"https://www.github.com/nvim-tree/nvim-tree.lua"
+	"https://www.github.com/nvim-tree/nvim-tree.lua",
+  "https://github.com/ibhagwan/fzf-lua"
 })
 	
 local function packadd(name)
 	vim.cmd("packadd " .. name)
 end
+packadd("fzf-lua")
 packadd("nvim-tree.lua")
 
 -- ============================================================================
@@ -422,3 +424,23 @@ vim.keymap.set("n", "<leader>e", function()
   require("nvim-tree.api").tree.toggle()
 end, { desc = "Toggle NvimTree" })
 
+require("fzf-lua").setup({})
+
+vim.keymap.set("n", "<leader>ff", function()
+	require("fzf-lua").files()
+end, { desc = "FZF Files" })
+vim.keymap.set("n", "<leader>fg", function()
+	require("fzf-lua").live_grep()
+end, { desc = "FZF Live Grep" })
+vim.keymap.set("n", "<leader>fb", function()
+	require("fzf-lua").buffers()
+end, { desc = "FZF Buffers" })
+vim.keymap.set("n", "<leader>fh", function()
+	require("fzf-lua").help_tags()
+end, { desc = "FZF Help Tags" })
+vim.keymap.set("n", "<leader>fx", function()
+	require("fzf-lua").diagnostics_document()
+end, { desc = "FZF Diagnostics Document" })
+vim.keymap.set("n", "<leader>fX", function()
+	require("fzf-lua").diagnostics_workspace()
+end, { desc = "FZF Diagnostics Workspace" })
