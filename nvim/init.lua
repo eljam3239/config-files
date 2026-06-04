@@ -419,6 +419,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ============================================================================
 vim.pack.add({
 	"https://www.github.com/nvim-tree/nvim-tree.lua",
+	"https://github.com/folke/which-key.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/nvim-mini/mini.nvim",
 	"https://github.com/lewis6991/gitsigns.nvim",
@@ -446,6 +447,7 @@ packadd("nvim-tree.lua")
 packadd("mini.nvim")
 packadd("gitsigns.nvim")
 packadd("nvim-treesitter")
+packadd("which-key.nvim")
 -- LSP
 packadd("nvim-lspconfig")
 packadd("mason.nvim")
@@ -944,3 +946,36 @@ vim.keymap.set("t", "<C-q>", function()
 		terminal_state.is_open = false
 	end
 end, { noremap = true, silent = true, desc = "Close floating terminal" })
+
+-- WHICH KEYMAPS
+--
+local wk = require("which-key")
+wk.add({
+	{ "<leader>f", group = "file" }, -- group
+	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
+	{
+		"<leader>fb",
+		function()
+			print("hello")
+		end,
+		desc = "Foobar",
+	},
+	{ "<leader>fn", desc = "New File" },
+	{ "<leader>f1", hidden = true }, -- hide this keymap
+	{ "<leader>w", proxy = "<c-w>", group = "windows" }, -- proxy to window mappings
+	{
+		"<leader>b",
+		group = "buffers",
+		expand = function()
+			return require("which-key.extras").expand.buf()
+		end,
+	},
+	{
+		-- Nested mappings are allowed and can be added in any order
+		-- Most attributes can be inherited or overridden on any level
+		-- There's no limit to the depth of nesting
+		mode = { "n", "v" }, -- NORMAL and VISUAL mode
+		{ "<leader>q", "<cmd>q<cr>", desc = "Quit" }, -- no need to specify mode since it's inherited
+		{ "<leader>w", "<cmd>w<cr>", desc = "Write" },
+	},
+})
