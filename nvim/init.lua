@@ -391,5 +391,34 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- ============================================================================
+-- PLUGINS (vim.pack)
+-- ============================================================================
+vim.pack.add({	
+	"https://www.github.com/nvim-tree/nvim-tree.lua"
+})
+	
+local function packadd(name)
+	vim.cmd("packadd " .. name)
+end
+packadd("nvim-tree.lua")
 
+-- ============================================================================
+-- PLUGIN CONFIGS
+-- ============================================================================
+
+require("nvim-tree").setup({
+  view = {
+    width = 35,
+  },
+  filters = {
+    dotfiles = false,
+  },
+  renderer = {
+    group_empty = true,
+  },
+})
+vim.keymap.set("n", "<leader>e", function()
+  require("nvim-tree.api").tree.toggle()
+end, { desc = "Toggle NvimTree" })
 
